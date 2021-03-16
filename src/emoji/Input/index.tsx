@@ -1,5 +1,5 @@
 import React from "react";
-import s from "./input.module.scss";
+import s from "./style.module.scss";
 
 interface Args {
   onChangeHandler: React.ChangeEventHandler<HTMLInputElement>;

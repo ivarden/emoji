@@ -1,6 +1,6 @@
 import React from "react";
 import icons from "./icons";
-import s from "./categories.module.scss";
+import s from "./style.module.scss";
 
 const Categories: React.FC = (): JSX.Element => {
   const [active, setActive] = React.useState(1);
@@ -14,7 +14,8 @@ const Categories: React.FC = (): JSX.Element => {
       key={item.id}
       onClick={() => onClickHandler(item.id)}
     >
-      <button title={item.title}> {item.icon}</button>
+      {/* <a href={item.category}><button title={item.title}> {item.icon}</button></a> */}
+      <a href={`#${item.category}`} ><button title={item.title}> {item.icon}</button></a>
     </div>
   ));
   return <div className={`${s.wrapper} `}>{categories}</div>;

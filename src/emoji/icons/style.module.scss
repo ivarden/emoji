@@ -1,0 +1,45 @@
+.iconsWrap {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+
+  .title {
+    flex: 0 0 auto;
+    margin-bottom: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: -0.41px;
+    color: #171a1f;
+  }
+
+  .icons {
+    flex: 0 1 auto;
+    
+  }
+
+  .iconWrap {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    padding: 8px;
+
+    :hover {
+      background-color: orange;
+      border-radius: 50px;
+    }
+
+    .icon {
+      padding: 2px 2px 4px 2px;
+      font-size: 22px;
+      cursor: pointer;
+      
+    }
+  }
+  .sorry{
+    justify-self: center;
+    align-self: center;
+  }
+}
