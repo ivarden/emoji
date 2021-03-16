@@ -1,4 +1,4 @@
-Open [DEMO](https://emoji-kvluqsvww-vardenadams.vercel.app/)
+Open [DEMO](https://emoji-theta.vercel.app/)
 
 ## Available Scripts
 
