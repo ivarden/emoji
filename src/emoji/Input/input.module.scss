@@ -1,0 +1,23 @@
+.input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: inherit;
+  background-color: #f2f3f5;
+  border-radius: 8px;
+  height: 40px;
+  padding: 5px 10px;
+  margin-bottom: 14px;
+  .searchIcon {
+    margin-right: 5px;
+    flex: 0 0 auto;
+  }
+  input {
+    flex: 1 1 auto;
+    outline: none;
+    height: 100%;
+    box-sizing: inherit;
+    border: 0;
+    background-color: inherit;
+  }
+}

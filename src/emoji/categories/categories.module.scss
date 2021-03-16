@@ -1,0 +1,45 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  position:relative;
+  padding-top: 5px;
+
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-top: 2px solid transparent;
+    transition: all 0.2s;
+
+    &:hover {
+      svg {
+        fill: orange;
+      }
+    }
+    svg {
+      fill: #70737a;
+    }
+
+    button {
+      background-color: transparent;
+      border: 0;
+      outline: none;
+      border-top: 2px solid transparent;
+    }
+  }
+
+  .active {
+    border-top: 2px solid #248bf2;
+    svg {
+      fill: #248bf2;
+    }
+    &:hover {
+      border-top: 2px solid #248bf2;
+      svg {
+        fill: #248bf2;
+      }
+    }
+  }
+}
