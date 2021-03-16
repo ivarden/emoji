@@ -95,22 +95,8 @@ const animals = [
     group: "Animals & Nature",
     subgroup: "animal-mammal",
   },
-  {
-    codes: "1F408 200D 2B1B",
-    char: "🐈‍⬛",
-    name: "black cat",
-    category: "Animals",
-    group: "Animals & Nature",
-    subgroup: "animal-mammal",
-  },
-  {
-    codes: "1F981",
-    char: "🦁",
-    name: "lion",
-    category: "Animals",
-    group: "Animals & Nature",
-    subgroup: "animal-mammal",
-  },
+
+
   {
     codes: "1F42F",
     char: "🐯",
@@ -171,14 +157,6 @@ const animals = [
     codes: "1F98C",
     char: "🦌",
     name: "deer",
-    category: "Animals",
-    group: "Animals & Nature",
-    subgroup: "animal-mammal",
-  },
-  {
-    codes: "1F9AC",
-    char: "🦬",
-    name: "bison",
     category: "Animals",
     group: "Animals & Nature",
     subgroup: "animal-mammal",
