@@ -1,11 +1,13 @@
 import React from "react";
 // import { BrowserRouter, NavLink } from "react-router-dom";
 import icons from "./icons";
+import { NavHashLink } from "react-router-hash-link";
+
 import s from "./style.module.scss";
 
 const Categories: React.FC = (): JSX.Element => {
   const [active, setActive] = React.useState(1);
-  const onClickHandler = (id: number) => {
+  const setCategoryHandler = (id: number) => {
     setActive(id);
   };
 
@@ -13,16 +15,11 @@ const Categories: React.FC = (): JSX.Element => {
     <div
       className={`${s.icon} ${active === item.id ? s.active : ""}`}
       key={item.id}
-      onClick={() => onClickHandler(item.id)}
+      onClick={() => setCategoryHandler(item.id)}
     >
-      {/* <BrowserRouter>
-        <NavLink to={`/${item.category}`}>
-          <button title={item.title}>{item.icon}</button>
-        </NavLink>
-      </BrowserRouter> */}
-      <a href={`#${item.category}`}>
-        <button title={item.title}> {item.icon}</button>
-      </a>
+      <NavHashLink to={`/#${item.category}`}>
+        <button title={item.title}>{item.icon}</button>
+      </NavHashLink>
     </div>
   ));
   return <div className={`${s.wrapper} `}>{categories}</div>;
