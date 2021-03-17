@@ -17,7 +17,8 @@ const Icons: React.FC<IconsType> = ({
 }): JSX.Element => {
   return (
     <div className={s.iconsWrap}>
-      <span className={s.title} id={title.id}>
+      <span id={title.id}></span>
+      <span className={s.title}>
         {title.name}
       </span>
       <div className={s.icons}>
