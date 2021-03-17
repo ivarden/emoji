@@ -1,4 +1,5 @@
 import React from "react";
+// import { BrowserRouter, NavLink } from "react-router-dom";
 import icons from "./icons";
 import s from "./style.module.scss";
 
@@ -14,8 +15,14 @@ const Categories: React.FC = (): JSX.Element => {
       key={item.id}
       onClick={() => onClickHandler(item.id)}
     >
-      {/* <a href={item.category}><button title={item.title}> {item.icon}</button></a> */}
-      <a href={`#${item.category}`} ><button title={item.title}> {item.icon}</button></a>
+      {/* <BrowserRouter>
+        <NavLink to={`/${item.category}`}>
+          <button title={item.title}>{item.icon}</button>
+        </NavLink>
+      </BrowserRouter> */}
+      <a href={`#${item.category}`}>
+        <button title={item.title}> {item.icon}</button>
+      </a>
     </div>
   ));
   return <div className={`${s.wrapper} `}>{categories}</div>;

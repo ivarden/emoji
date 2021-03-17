@@ -7,18 +7,16 @@
 
   .title {
     flex: 0 0 auto;
-    // margin-bottom: 10px;
     padding: 5px 0;
     font-size: 15px;
     font-weight: 600;
     line-height: 24px;
     letter-spacing: -0.41px;
     color: #171a1f;
-
-    background: white;
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(16px);
     position: sticky;
     top: 0;
-    // box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
   }
 
   .icons {
