@@ -31,7 +31,7 @@ const Emoji: React.FC = () => {
   }, []);
 
   const searchHendler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    let word = event.target.value;
+    let word = event.target.value.toLowerCase();
     setPeople(iconsPeople.filter((item: Icon) => item.name.includes(word)));
     setAnimals(iconsAnimals.filter((item: Icon) => item.name.includes(word)));
     setFrequently(
