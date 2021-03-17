@@ -16,27 +16,25 @@ interface Icon {
 type IconsType = Array<Icon>;
 
 const Emoji: React.FC = () => {
-  const [people, setPeople] = useState<IconsType | []>([]);
-  const [animals, setAnimals] = useState<IconsType | []>([]);
-  const [frequently, setFrequently] = useState<IconsType | []>([]);
+  const [people, setPeople] = useState<IconsType>([]);
+  const [animals, setAnimals] = useState<IconsType>([]);
+  const [frequently, setFrequently] = useState<IconsType>([]);
 
   const wrapInner = useRef(null as null | HTMLDivElement);
 
   useEffect(() => {
-    iconsPeople.length > 0 ? setPeople(iconsPeople) : setPeople([]);
-    iconsAnimals.length > 0 ? setAnimals(iconsAnimals) : setAnimals([]);
-    iconsFrequently.length > 0
-      ? setFrequently(iconsFrequently)
-      : setFrequently([]);
+    if (iconsPeople.length > 0) setPeople(iconsPeople);
+    if (iconsAnimals.length > 0) setAnimals(iconsAnimals);
+    if (iconsFrequently.length > 0) setFrequently(iconsFrequently);
   }, []);
 
   const searchHendler = (event: React.ChangeEvent<HTMLInputElement>) => {
     let word = event.target.value.toLowerCase();
-    setPeople(iconsPeople.filter((item: Icon) => item.name.includes(word)));
-    setAnimals(iconsAnimals.filter((item: Icon) => item.name.includes(word)));
-    setFrequently(
-      iconsFrequently.filter((item: Icon) => item.name.includes(word))
-    );
+    const helper = (icons: IconsType) =>
+      icons.filter((item: Icon) => item.name.includes(word));
+    setPeople(helper(iconsPeople));
+    setAnimals(helper(iconsAnimals));
+    // setFrequently(helper(iconsFrequently));
   };
 
   const iconsFrequentlyHandler = (icon: Icon) => {
@@ -53,7 +51,7 @@ const Emoji: React.FC = () => {
             <Icons
               icons={frequently}
               title={{ id: "Frequently", name: "Frequently used" }}
-              iconsFrequentlyHandler={iconsFrequentlyHandler}
+              iconsFrequentlyHandler={()=>{}}
             />
           ) : (
             ""
