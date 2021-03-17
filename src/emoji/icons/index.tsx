@@ -9,22 +9,26 @@ interface IconItem {
 type IconsType = {
   icons: Array<IconItem>;
   title: { id: string; name: string };
+  iconsFrequentlyHandler: Function;
 };
 
 const Icons: React.FC<IconsType> = ({
   icons = [],
   title = { id: "1", name: "Title" },
+  iconsFrequentlyHandler,
 }): JSX.Element => {
   return (
     <div className={s.iconsWrap}>
       <span id={title.id}></span>
-      <span className={s.title}>
-        {title.name}
-      </span>
+      <span className={s.title}>{title.name}</span>
       <div className={s.icons}>
         {icons.length > 0 ? (
           icons.map((item) => (
-            <div className={s.iconWrap} key={item.codes}>
+            <div
+              className={s.iconWrap}
+              key={item.codes}
+              onClick={() => iconsFrequentlyHandler(item)}
+            >
               <span className={s.icon} title={item.name}>
                 {item.char}
               </span>

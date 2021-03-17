@@ -39,6 +39,10 @@ const Emoji: React.FC = () => {
     );
   };
 
+  const iconsFrequentlyHandler = (icon: Icon) => {
+    setFrequently((prev) => [...prev, icon]);
+  };
+
   return (
     <>
       <div className={s.wrap}>
@@ -49,17 +53,26 @@ const Emoji: React.FC = () => {
             <Icons
               icons={frequently}
               title={{ id: "Frequently", name: "Frequently used" }}
+              iconsFrequentlyHandler={iconsFrequentlyHandler}
             />
           ) : (
             ""
           )}
           {people.length ? (
-            <Icons icons={people} title={{ id: "People", name: "People" }} />
+            <Icons
+              icons={people}
+              title={{ id: "People", name: "People" }}
+              iconsFrequentlyHandler={iconsFrequentlyHandler}
+            />
           ) : (
             ""
           )}
           {animals.length ? (
-            <Icons icons={animals} title={{ id: "Animals", name: "Animals" }} />
+            <Icons
+              icons={animals}
+              title={{ id: "Animals", name: "Animals" }}
+              iconsFrequentlyHandler={iconsFrequentlyHandler}
+            />
           ) : (
             ""
           )}
