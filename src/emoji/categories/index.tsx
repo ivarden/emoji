@@ -1,5 +1,4 @@
 import React from "react";
-// import { BrowserRouter, NavLink } from "react-router-dom";
 import icons from "./icons";
 import { NavHashLink } from "react-router-hash-link";
 

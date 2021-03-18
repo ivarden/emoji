@@ -2,21 +2,14 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import Input from "./Input";
 import Categories from "./categories";
-import Icons from "./icons";
 import s from "./emoji.module.scss";
 import iconsPeople from "./iconsPeople";
 import iconsAnimals from "./iconsAnimals";
 import iconsFrequently from "./iconsFrequently";
+import Category from "./iconsCategory";
+import { Icon, IconsType } from "./ts";
 
-interface Icon {
-  codes: string;
-  char: string;
-  name: string;
-  category: string;
-}
-type IconsType = Array<Icon>;
-
-const Emoji: React.FC = () => {
+const Emoji: React.FC = (): JSX.Element => {
   const [people, setPeople] = useState<IconsType>([]);
   const [animals, setAnimals] = useState<IconsType>([]);
   const [frequently, setFrequently] = useState<IconsType>([]);
@@ -29,10 +22,12 @@ const Emoji: React.FC = () => {
 
   const searchHendler = (event: React.ChangeEvent<HTMLInputElement>) => {
     let word = event.target.value.toLowerCase();
-    const helper = (icons: IconsType) =>
+
+    const filterHendler = (icons: IconsType) =>
       icons.filter((item: Icon) => item.name.includes(word));
-    setPeople(helper(iconsPeople));
-    setAnimals(helper(iconsAnimals));
+
+    setPeople(filterHendler(iconsPeople));
+    setAnimals(filterHendler(iconsAnimals));
   };
 
   const iconsFrequentlyHandler = (icon: Icon) => {
@@ -49,33 +44,24 @@ const Emoji: React.FC = () => {
           <span className={s.title}>Emoji</span>
           <Input onChangeHandler={searchHendler} />
           <div className={s.wrapInner}>
-            {frequently.length ? (
-              <Icons
-                icons={frequently}
-                title={{ id: "Frequently", name: "Frequently used" }}
-                iconsFrequentlyHandler={() => {}}
-              />
-            ) : (
-              ""
-            )}
-            {people.length ? (
-              <Icons
-                icons={people}
-                title={{ id: "People", name: "People" }}
-                iconsFrequentlyHandler={iconsFrequentlyHandler}
-              />
-            ) : (
-              ""
-            )}
-            {animals.length ? (
-              <Icons
-                icons={animals}
-                title={{ id: "Animals", name: "Animals" }}
-                iconsFrequentlyHandler={iconsFrequentlyHandler}
-              />
-            ) : (
-              ""
-            )}
+            <Category
+              category={frequently}
+              id="Frequently"
+              name="Frequently used"
+              fn={() => {}}
+            />
+            <Category
+              category={people}
+              id="People"
+              name="People"
+              fn={iconsFrequentlyHandler}
+            />
+            <Category
+              category={animals}
+              id="Animals"
+              name="Animals"
+              fn={iconsFrequentlyHandler}
+            />
           </div>
           <Categories />
         </div>
