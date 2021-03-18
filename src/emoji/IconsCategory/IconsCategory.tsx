@@ -1,20 +1,10 @@
 import React from "react";
+import { IconsCategoryType } from "../ts";
 import s from "./style.module.scss";
 
-interface IconItem {
-  codes: string;
-  char: string;
-  name: string;
-}
-type IconsType = {
-  icons: Array<IconItem>;
-  title: { id: string; name: string };
-  iconsFrequentlyHandler: Function;
-};
-
-const Icons: React.FC<IconsType> = ({
-  icons = [],
-  title = { id: "1", name: "Title" },
+const IconsCategory: React.FC<IconsCategoryType> = ({
+  icons,
+  title,
   iconsFrequentlyHandler,
 }): JSX.Element => {
   return (
@@ -42,4 +32,4 @@ const Icons: React.FC<IconsType> = ({
   );
 };
 
-export default Icons;
+export default IconsCategory;

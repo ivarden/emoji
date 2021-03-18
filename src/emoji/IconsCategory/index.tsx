@@ -1,12 +1,12 @@
 import React from "react";
-import Icons from "./icons";
-import { CategoryType } from "./ts";
+import Category from "./IconsCategory";
+import { CategoryType } from "../ts";
 
-const Category = ({ category, id, name, fn }: CategoryType): JSX.Element => {
+const Container = ({ category, id, name, fn }: CategoryType): JSX.Element => {
   return (
     <>
       {category.length ? (
-        <Icons
+        <Category
           icons={category}
           title={{ id, name }}
           iconsFrequentlyHandler={fn}
@@ -18,4 +18,4 @@ const Category = ({ category, id, name, fn }: CategoryType): JSX.Element => {
   );
 };
 
-export default Category;
+export default Container;

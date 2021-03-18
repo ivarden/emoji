@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import Input from "./Input";
-import Categories from "./categories";
-import s from "./emoji.module.scss";
+import Categories from './Categories'
+import Category from "./IconsCategory";
 import iconsPeople from "./iconsPeople";
 import iconsAnimals from "./iconsAnimals";
 import iconsFrequently from "./iconsFrequently";
-import Category from "./iconsCategory";
 import { Icon, IconsType } from "./ts";
+import s from "./emoji.module.scss";
 
 const Emoji: React.FC = (): JSX.Element => {
   const [people, setPeople] = useState<IconsType>([]);
