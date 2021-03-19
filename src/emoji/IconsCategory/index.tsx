@@ -2,15 +2,11 @@ import React from "react";
 import Category from "./IconsCategory";
 import { CategoryType } from "../ts";
 
-const Container = ({ category, id, name, fn }: CategoryType): JSX.Element => {
+const Container = ({ category, id, name, fn, inputRef }: CategoryType): JSX.Element => {
   return (
     <>
       {category.length ? (
-        <Category
-          icons={category}
-          title={{ id, name }}
-          iconsFrequentlyHandler={fn}
-        />
+        <Category category={category} id={id} name={name} fn={fn} inputRef={inputRef}/>
       ) : (
         ""
       )}

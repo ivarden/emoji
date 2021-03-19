@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { BrowserRouter } from "react-router-dom";
 import Input from "./Input";
-import Categories from './Categories'
-import Category from "./IconsCategory";
-import iconsPeople from "./iconsPeople";
-import iconsAnimals from "./iconsAnimals";
-import iconsFrequently from "./iconsFrequently";
-import { Icon, IconsType } from "./ts";
+import Categories from "./Categories";
+import IconsCategory from "./IconsCategory";
+import iconsPeople from "./data/iconsPeople";
+import iconsAnimals from "./data/iconsAnimals";
+import iconsFrequently from "./data/iconsFrequently";
+import { IconType, IconsType, RefType, InputType } from "./ts";
 import s from "./emoji.module.scss";
 
 const Emoji: React.FC = (): JSX.Element => {
@@ -15,26 +15,39 @@ const Emoji: React.FC = (): JSX.Element => {
   const [frequently, setFrequently] = useState<IconsType>([]);
 
   useEffect(() => {
-    if (iconsPeople.length > 0) setPeople(iconsPeople);
-    if (iconsAnimals.length > 0) setAnimals(iconsAnimals);
-    if (iconsFrequently.length > 0) setFrequently(iconsFrequently);
+    if (iconsPeople.length) setPeople(iconsPeople);
+    if (iconsAnimals.length) setAnimals(iconsAnimals);
+    if (iconsFrequently.length) setFrequently(iconsFrequently);
   }, []);
 
-  const searchHendler = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const searchHendler = (event: InputType) => {
     let word = event.target.value.toLowerCase();
 
     const filterHendler = (icons: IconsType) =>
-      icons.filter((item: Icon) => item.name.includes(word));
+      icons.filter((item: IconType) => item.name.includes(word));
 
     setPeople(filterHendler(iconsPeople));
     setAnimals(filterHendler(iconsAnimals));
   };
 
-  const iconsFrequentlyHandler = (icon: Icon) => {
-    const filterDuplicate = (prev: IconsType, icon: Icon) =>
+  const iconsFrequentlyHandler = (icon: IconType) => {
+    const filterDuplicate = (prev: IconsType, icon: IconType) =>
       prev.filter((el) => el.codes !== icon.codes);
 
     setFrequently((prev) => [...filterDuplicate(prev, icon), icon]);
+  };
+
+  const Frequently = useRef();
+  const People = useRef();
+  const Animals = useRef();
+  const Food = useRef();
+  const Activity = useRef();
+  const Flags = useRef();
+  const Places = useRef();
+  const Objects = useRef();
+
+  const onClickCategory = (ref: RefType) => {
+    ref.current.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -44,26 +57,41 @@ const Emoji: React.FC = (): JSX.Element => {
           <span className={s.title}>Emoji</span>
           <Input onChangeHandler={searchHendler} />
           <div className={s.wrapInner}>
-            <Category
+            <IconsCategory
               category={frequently}
               id="Frequently"
               name="Frequently used"
               fn={() => {}}
+              inputRef={Frequently}
             />
-            <Category
+            <IconsCategory
               category={people}
               id="People"
               name="People"
               fn={iconsFrequentlyHandler}
+              inputRef={People}
             />
-            <Category
+            <IconsCategory
               category={animals}
               id="Animals"
               name="Animals"
               fn={iconsFrequentlyHandler}
+              inputRef={Animals}
             />
           </div>
-          <Categories />
+          <Categories
+            inputRef={{
+              Frequently,
+              People,
+              Animals,
+              Food,
+              Activity,
+              Flags,
+              Places,
+              Objects,
+            }}
+            fn={onClickCategory}
+          />
         </div>
       </BrowserRouter>
     </>

@@ -1,23 +1,23 @@
 import React from "react";
-import { IconsCategoryType } from "../ts";
+import { IconType, CategoryType } from "../ts";
 import s from "./style.module.scss";
 
-const IconsCategory: React.FC<IconsCategoryType> = ({
-  icons,
-  title,
-  iconsFrequentlyHandler,
+const IconsCategory: React.FC<CategoryType | any> = ({
+  category,
+  name,
+  fn,
+  inputRef,
 }): JSX.Element => {
   return (
-    <div className={s.iconsWrap}>
-      <span id={title.id}></span>
-      <span className={s.title}>{title.name}</span>
+    <div className={s.iconsWrap} ref={inputRef}>
+      <span className={s.title}>{name}</span>
       <div className={s.icons}>
-        {icons.length > 0 ? (
-          icons.map((item) => (
+        {category.length ? (
+          category.map((item: IconType) => (
             <div
               className={s.iconWrap}
               key={item.codes}
-              onClick={() => iconsFrequentlyHandler(item)}
+              onClick={() => fn(item)}
             >
               <span className={s.icon} title={item.name}>
                 {item.char}
@@ -25,7 +25,7 @@ const IconsCategory: React.FC<IconsCategoryType> = ({
             </div>
           ))
         ) : (
-          <h5 className={s.sorry}>Sorry there isn't an emoji for this</h5>
+          <h5 className={s.sorry}>Sorry there is not an emoji for this</h5>
         )}
       </div>
     </div>
