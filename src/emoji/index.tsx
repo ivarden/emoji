@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { BrowserRouter } from "react-router-dom";
 import Input from "./Input";
-import Categories from "./Categories";
+import NavCategories from "./NavCategories";
 import IconsCategory from "./IconsCategory";
 import iconsPeople from "./data/iconsPeople";
 import iconsAnimals from "./data/iconsAnimals";
@@ -79,7 +79,7 @@ const Emoji: React.FC = (): JSX.Element => {
               inputRef={Animals}
             />
           </div>
-          <Categories
+          <NavCategories
             inputRef={{
               Frequently,
               People,
