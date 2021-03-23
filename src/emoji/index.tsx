@@ -1,23 +1,31 @@
 import React, { useEffect, useState, useRef } from "react";
-import { BrowserRouter } from "react-router-dom";
 import Input from "./Input";
 import NavCategories from "./NavCategories";
 import IconsCategory from "./IconsCategory";
 import iconsPeople from "./data/iconsPeople";
 import iconsAnimals from "./data/iconsAnimals";
 import iconsFrequently from "./data/iconsFrequently";
+import iconsFood from "./data/iconsFood";
+import iconsFlags from "./data/iconsFlags";
+import iconsActivities from "./data/iconsActivities";
 import { IconType, IconsType, RefType, InputType } from "./ts";
 import s from "./emoji.module.scss";
 
 const Emoji: React.FC = (): JSX.Element => {
+  const [frequently, setFrequently] = useState<IconsType>([]);
   const [people, setPeople] = useState<IconsType>([]);
   const [animals, setAnimals] = useState<IconsType>([]);
-  const [frequently, setFrequently] = useState<IconsType>([]);
+  const [food, setFood] = useState<IconsType>([]);
+  const [activities, setActivities] = useState<IconsType>([]);
+  const [flags, setFlags] = useState<IconsType>([]);
 
   useEffect(() => {
+    if (iconsFrequently.length) setFrequently(iconsFrequently);
     if (iconsPeople.length) setPeople(iconsPeople);
     if (iconsAnimals.length) setAnimals(iconsAnimals);
-    if (iconsFrequently.length) setFrequently(iconsFrequently);
+    if (iconsFood.length) setFood(iconsFood);
+    if (iconsActivities.length) setActivities(iconsActivities);
+    if (iconsFlags.length) setFlags(iconsFlags);
   }, []);
 
   const searchHendler = (event: InputType) => {
@@ -28,6 +36,9 @@ const Emoji: React.FC = (): JSX.Element => {
 
     setPeople(filterHendler(iconsPeople));
     setAnimals(filterHendler(iconsAnimals));
+    setFood(filterHendler(iconsFood));
+    setActivities(filterHendler(iconsActivities));
+    setFlags(filterHendler(iconsFlags));
   };
 
   const iconsFrequentlyHandler = (icon: IconType) => {
@@ -41,18 +52,17 @@ const Emoji: React.FC = (): JSX.Element => {
   const People = useRef();
   const Animals = useRef();
   const Food = useRef();
-  const Activity = useRef();
+  const Activities = useRef();
   const Flags = useRef();
   const Places = useRef();
   const Objects = useRef();
 
-  const onClickCategory = (ref: RefType) => {
+  const onClickCategory = React.useCallback((ref: RefType) => {
     ref.current.scrollIntoView({ behavior: "smooth" });
-  };
+  }, []);
 
   return (
     <>
-      <BrowserRouter>
         <div className={s.wrap}>
           <span className={s.title}>Emoji</span>
           <Input onChangeHandler={searchHendler} />
@@ -78,6 +88,27 @@ const Emoji: React.FC = (): JSX.Element => {
               fn={iconsFrequentlyHandler}
               inputRef={Animals}
             />
+            <IconsCategory
+              category={food}
+              id="Food"
+              name="Food"
+              fn={iconsFrequentlyHandler}
+              inputRef={Food}
+            />
+            <IconsCategory
+              category={activities}
+              id="Activities"
+              name="Activities"
+              fn={iconsFrequentlyHandler}
+              inputRef={Activities}
+            />
+            <IconsCategory
+              category={flags}
+              id="Flags"
+              name="Flags"
+              fn={iconsFrequentlyHandler}
+              inputRef={Flags}
+            />
           </div>
           <NavCategories
             inputRef={{
@@ -85,7 +116,7 @@ const Emoji: React.FC = (): JSX.Element => {
               People,
               Animals,
               Food,
-              Activity,
+              Activities,
               Flags,
               Places,
               Objects,
@@ -93,7 +124,6 @@ const Emoji: React.FC = (): JSX.Element => {
             fn={onClickCategory}
           />
         </div>
-      </BrowserRouter>
     </>
   );
 };

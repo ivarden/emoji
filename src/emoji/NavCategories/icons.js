@@ -83,8 +83,8 @@ const categories = [
 
   {
     id: 5,
-    title: "Activity",
-    category: "Activity",
+    title: "Activities",
+    category: "Activities",
     icon: (
       <svg
         width="20"

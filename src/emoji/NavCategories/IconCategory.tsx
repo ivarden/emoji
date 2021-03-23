@@ -19,6 +19,7 @@ const Categories: React.FC<any> = ({
       key={icons.id}
       onClick={onClickHandler}
       ref={inputRef}
+      title={icons.title}
     >
       <button title={icons.title}>{icons.icon}</button>
     </div>
